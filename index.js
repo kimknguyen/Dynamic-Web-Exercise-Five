@@ -12,14 +12,14 @@ const firebaseConfig = {
     appId: "1:979464080464:web:b826d7e98a837a3b9a1555"
   };
 
-firebase.intializeApp(firebaseConfig); 
+firebase.initializeApp(firebaseConfig); 
 
 const indexRoute = require("./routes/index"); 
-//const singlePostRoute = require('./routes/singlePost'); 
+const singlePostRoute = require('./routes/singlePost'); 
 //const createPostRoute = require('./routes/createPost'); 
 
 app.use("/", indexRoute); 
-
+app.use("/post", singlePostRoute); 
 
 
   app.listen(port, () => {
