@@ -18,7 +18,7 @@ const submitForm = `
             <input type="text" name="author" />
         </label>
 
-            <button type= "submit">Submit</button>
+        <button type= "submit">Submit</button>
     </form>
 
 `
@@ -35,7 +35,7 @@ router.get('/submit', (req, res) => {
 
     const id = title.replace(/\s+/g, "-").toLowerCase(); 
 
-    const setBlogPost = firestore.setDoc(firestore.doc(db, "posts", "hi"), {
+    const setBlogPost = firestore.setDoc(firestore.doc(db, "posts", id), {
         postTitle: title, 
         postText: text, 
         author: author, 
@@ -45,15 +45,15 @@ router.get('/submit', (req, res) => {
     .then(() => {
         res.send(`
 
-            <h1>thanks</h1> 
-            <p><a href="/create">Submit another post</a>.</p> 
+        <h1>thanks</h1> 
+        <p><a href="/create">Submit another post</a>.</p> 
     
-            `); 
-        })
+        `); 
+    })
 
     .catch((error) => {
         console.warn(error); 
-        res.send(`Error: Submitting:${error.toString()}` )
+        res.send(`Error: Submitting:${error.toString()}` ); 
 
             
         })
